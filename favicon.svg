@@ -1,14 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Jerry 网站启动台">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0a6fb5"/>
       <stop offset="1" stop-color="#2bb3ed"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="url(#g)"/>
-  <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(32 32) scale(1.9) translate(-12 -12)">
-    <rect x="3" y="4" width="18" height="14" rx="2.5"/>
-    <path d="M8 21h8M12 18v3"/>
-    <path d="M9.5 9.5l2 2 3.5-3.5"/>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <g fill="#fff">
+    <rect x="15" y="15" width="13" height="13" rx="3.5"/>
+    <rect x="36" y="15" width="13" height="13" rx="3.5" opacity="0.72"/>
+    <rect x="15" y="36" width="13" height="13" rx="3.5" opacity="0.72"/>
+    <rect x="36" y="36" width="13" height="13" rx="3.5" opacity="0.5"/>
   </g>
 </svg>
