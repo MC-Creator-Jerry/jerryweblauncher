@@ -338,6 +338,128 @@ html[data-theme="dark"] .icon-moon { display: block; }
 }
 .foot-by { margin-top: 4px; opacity: 0.75; }
 
+/* ============ 登录（小蓝页 SSO） ============ */
+.hdr-auth { display: flex; align-items: center; }
+.login-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 35%, transparent);
+  transition: filter .15s, transform .1s;
+}
+.login-btn:hover { filter: brightness(1.08); }
+.login-btn:active { transform: scale(0.97); }
+.login-btn svg { width: 16px; height: 16px; }
+
+.user-wrap { position: relative; }
+.avatar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 12px 0 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  max-width: 180px;
+  transition: border-color .15s, background .15s;
+}
+.avatar-btn:hover { border-color: var(--accent); }
+.avatar-btn img, .avatar-btn .fb {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a6fb5, #2bb3ed);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+.avatar-btn .nm {
+  font-size: 0.86rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jl-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 120;
+  min-width: 210px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  box-shadow: var(--shadow-hover);
+  padding: 8px;
+  font-size: 0.88rem;
+}
+.jl-menu.hide { display: none; }
+.jl-menu .mhd { padding: 8px 10px 10px; }
+.jl-menu .mhd .n { font-weight: 800; display: flex; align-items: center; gap: 6px; }
+.jl-menu .mhd .n .badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 1px 7px;
+}
+.jl-menu .mhd .l { font-size: 0.76rem; color: var(--muted); margin-top: 2px; }
+.jl-menu .sep { height: 1px; background: var(--line); margin: 6px 4px; }
+.jl-menu a, .jl-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+.jl-menu a:hover, .jl-menu button:hover { background: var(--accent-soft); color: var(--accent); }
+.jl-menu button { font-weight: 600; }
+
+/* SSO 错误提示条 */
+.sso-notice {
+  max-width: calc(1080px - 48px);
+  margin: 14px auto -6px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: color-mix(in srgb, #d13438 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, #d13438 40%, var(--line));
+  color: #d13438;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+/* 磁贴真实图标（图片模式） */
+.tile-icon.has-img { background: transparent; border-color: transparent; padding: 0; }
+.tile-icon.has-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
 /* ============ 响应式：横竖屏 / 平板 / 折叠屏 / 安全区 ============ */
 /* 竖屏安全区：刘海/圆角不遮挡（无凹口设备 env 回退 0，零视觉变化） */
 @media (orientation: portrait) {
@@ -373,6 +495,10 @@ html[data-theme="dark"] .icon-moon { display: block; }
   .brand h1 { font-size: 1.02rem; }
   .brand-sub { display: none; }
   .clock-time { font-size: 0.98rem; }
+  /* 窄屏：头像菜单只留头像，登录按钮收窄 */
+  .avatar-btn { max-width: 40px; padding: 0; }
+  .avatar-btn .nm { display: none; }
+  .login-btn { padding: 0 12px; }
 }
 /* 超窄屏（≤380px）：单列大磁贴 */
 @media (max-width: 380px) {

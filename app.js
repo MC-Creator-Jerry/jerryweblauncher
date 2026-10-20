@@ -11,7 +11,8 @@
       desc: 'Jerry 的数字花园主页：项目、博客、工具与账号中心。',
       url: 'https://mc-creator-jerry-webpage.pages.dev/',
       domain: 'mc-creator-jerry-webpage.pages.dev',
-      icon: '🏠',
+      icon: 'icons/xiaolan.svg',
+      emoji: '🏠',
       cat: '枢纽',
       keys: 'xiaolan xlp 主页 home 首页 小蓝 蓝色 jerry 博客 blog 工具'
     },
@@ -20,7 +21,8 @@
       desc: '社区茶馆：游戏、书籍、心理专区分区畅聊，投稿与关注。',
       url: 'https://jerryteahouse.pages.dev/',
       domain: 'jerryteahouse.pages.dev',
-      icon: '🍵',
+      icon: 'icons/teahouse.svg',
+      emoji: '🍵',
       cat: '社区',
       keys: 'teahouse chaguan 社区 论坛 聊天 讨论 茶馆 游戏 心理'
     },
@@ -29,7 +31,8 @@
       desc: '视频社区：网页直连与片屿播放器双模式，倍速与定点讨论。',
       url: 'https://jerrypianyu.pages.dev/',
       domain: 'jerrypianyu.pages.dev',
-      icon: '🎬',
+      icon: 'icons/pianyu.svg',
+      emoji: '🎬',
       cat: '影音',
       keys: 'pianyu 片屿 视频 video 播放 影视 弹幕 b站 youtube'
     },
@@ -38,7 +41,8 @@
       desc: '藏书阁：公版好书与阅读书架，跨站收藏同步。',
       url: 'https://jerrybookstation.pages.dev/',
       domain: 'jerrybookstation.pages.dev',
-      icon: '📚',
+      icon: 'icons/bookstation.svg',
+      emoji: '📚',
       cat: '阅读',
       keys: 'bookstation shuzhan 书栈 书 图书 阅读 藏书 library books'
     },
@@ -47,7 +51,8 @@
       desc: '自托管音乐库与播放器：循环模式、收藏与创作者中心。',
       url: 'https://jerrymusic.pages.dev/',
       domain: 'jerrymusic.pages.dev',
-      icon: '🎵',
+      icon: 'icons/music.svg',
+      emoji: '🎵',
       cat: '音乐',
       keys: 'music yinyue 音乐 电台 播放器 歌曲 歌单'
     },
@@ -56,7 +61,8 @@
       desc: '每日 09:00 自动更新的中英双语全球要闻速读。',
       url: 'https://mc-creator-jerry.github.io/daily-news/',
       domain: 'mc-creator-jerry.github.io/daily-news',
-      icon: '📰',
+      icon: 'icons/news.svg',
+      emoji: '📰',
       cat: '新闻',
       keys: 'news yaowen 新闻 要闻 日报 全球 daily 资讯'
     },
@@ -65,7 +71,8 @@
       desc: '麦克风实时监测：设定分贝阈值，超标即刻声光警报。',
       url: 'https://jerrydbalarm.pages.dev/',
       domain: 'jerrydbalarm.pages.dev',
-      icon: '🔔',
+      icon: 'icons/dbalarm.svg',
+      emoji: '🔔',
       cat: '工具',
       keys: 'dbalarm zaoyin 噪音 警报器 分贝 db 声音 alarm 麦克风'
     }
@@ -141,7 +148,22 @@
 
       var ico = document.createElement('span');
       ico.className = 'tile-icon';
-      ico.textContent = s.icon;
+      if (/\.(svg|png|jpe?g|webp|gif)$/i.test(s.icon || '')) {
+        // 真实站点图标（与各站 favicon 同步）；加载失败自动回退 emoji
+        ico.classList.add('has-img');
+        var img = document.createElement('img');
+        img.src = s.icon;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.onerror = function () {
+          ico.classList.remove('has-img');
+          ico.textContent = s.emoji || '🌐';
+        };
+        ico.appendChild(img);
+      } else {
+        ico.textContent = s.icon || s.emoji || '🌐';
+      }
 
       var body = document.createElement('span');
       body.className = 'tile-body';
