@@ -84,10 +84,7 @@ body {
   width: 38px;
   height: 38px;
   flex: none;
-  color: #fff;
-  background: linear-gradient(135deg, #0a6fb5, #2bb3ed);
   border-radius: 11px;
-  padding: 7px;
   box-shadow: 0 3px 10px rgba(0, 120, 212, 0.35);
 }
 .brand-text { min-width: 0; }
@@ -507,7 +504,7 @@ html[data-theme="dark"] .icon-moon { display: block; }
 /* 横屏矮高度（手机横放 / 折叠 PC 模式）：顶栏与磁贴收紧，首屏看到更多 */
 @media (orientation: landscape) and (max-height: 560px) {
   .header-inner { padding-top: 8px; padding-bottom: 8px; }
-  .brand-logo { width: 32px; height: 32px; border-radius: 9px; padding: 6px; }
+  .brand-logo { width: 32px; height: 32px; border-radius: 9px; }
   .brand h1 { font-size: 1rem; }
   .search-row { margin-bottom: 12px; }
   .search-box { height: 42px; }
